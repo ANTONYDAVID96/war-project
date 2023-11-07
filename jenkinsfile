@@ -20,6 +20,22 @@ stage('bbuild to images') {
                }
     }
 }
+stage('push to hub') {
+            steps {
+               script{
+                  withCredentials([string(credentialsId: 'DavidDockerAntony', variable: 'docker_warfile')]) {
+                     sh "docker lonin -u antonydavid96 -p ${docker_warfile}"
+                  }
+                  bat 'docker push antonydavid96/mywar'
+               }
+            }
+}
+stage('Deploy') {
+            steps {
+               script{
+                  bat 'docker run -itd --name mywarfile -p 8080:8080 antonydavid96/mywar'
     }
 }
-
+}
+    }
+}
