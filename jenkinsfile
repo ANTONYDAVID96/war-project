@@ -13,7 +13,7 @@ pipeline {
                bat "mvn install"
 }
 }
-stage('bbuild to images') {
+stage('build to images') {
             steps {
                script{
                   bat 'docker build -t antonydavid96/mywar .'
