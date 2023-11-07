@@ -16,7 +16,7 @@ pipeline {
 stage('build to images') {
             steps {
                script{
-                  bat 'docker build -t antonydavid96/mywar .'
+                  bat 'docker build -t antonydavid96/mywar:new .'
                }
     }
 }
@@ -26,14 +26,14 @@ stage('push to hub') {
                   withCredentials([string(credentialsId: 'DavidDockerAntony', variable: 'docker_warfile')]) {
                      sh "docker login -u antonydavid96 -p ${docker_warfile}"
                   }
-                  bat 'docker push antonydavid96/mywar'
+                  bat 'docker push antonydavid96/mywar:new'
                }
             }
 }
 stage('Deploy') {
             steps {
                script{
-                  bat 'docker run -itd --name mywarfile -p 8080:8080 antonydavid96/mywar'
+                  bat 'docker run -itd --name mywarfile -p 8080:8080 antonydavid96/mywar:new'
     }
 }
 }
