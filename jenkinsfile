@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('scm') {
+            steps {
+        git branch: 'main', url: 'https://github.com/ANTONYDAVID96/war-project.git'
+            }
+        }
+        stage('build') {
+            steps {
+               bat "mvn clean"
+               bat "mvn install"
+}
+}
+stage('bbuild to images') {
+            steps {
+               script{
+                  bat 'docker build -t antonydavid96/mywar .'
+               }
+    }
+}
+
