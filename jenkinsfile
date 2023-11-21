@@ -24,7 +24,7 @@ stage('push to hub') {
             steps {
                script{
                   withCredentials([string(credentialsId: 'DavidDockerAntony', variable: 'docker_warfile')]) {
-                     sh "docker login -u antonydavid96 -p ${docker_warfile}"
+                     bat "docker login -u antonydavid96 -p ${docker_warfile}"
                   }
                   bat 'docker push antonydavid96/tomcat:2'
                }
