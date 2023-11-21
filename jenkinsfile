@@ -34,8 +34,8 @@ stage('Deploy') {
             steps {
                 script{
                     def dockerRun ='docker run -p 8080:8080 -d --name tomcat antonydavid96/tomcat:2'
-                        sshagent(['delpoy-server']) {
-                            bat "ssh -o StrictHostKeyChecking=no  ec2-user@3.93.199.182 ${dockerRun}"
+                    sshagent(['deploy_pro']) {
+                         bat "ssh -o StrictHostKeyChecking=no  ec2-user@3.93.199.182 ${dockerRun}"
 }
 }
     }
