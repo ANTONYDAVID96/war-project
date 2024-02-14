@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files: 
-  - source: / destination: /var/lib/tomcat7/webapps/
+  - source: / destination: /var/lib/tomcat9/webapps/
 permissions: 
   - object: / 
     pattern: "**" 
